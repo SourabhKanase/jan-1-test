@@ -8,7 +8,7 @@ let state={
 
 let apireducer=(initalState=state,action)=>{
 
-    console.log("firstreducer running");
+    // console.log("firstreducer running");
     switch(action.type)
     {
         case API_FETCHING: return {...initalState,fetching:true}
@@ -17,7 +17,7 @@ let apireducer=(initalState=state,action)=>{
 
         case API_FETCH_FAIL:return {...initalState,fetching:false,data:[],err:action.payload}
 
-        default:return state;
+        default:return initalState;
     }
 }
 

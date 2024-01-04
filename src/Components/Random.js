@@ -8,9 +8,9 @@ let Random=()=>{
     console.log("running");
     let dispatch=useDispatch()
     let values=useSelector((state)=>{
-        return state.api;
+        return state;
     });
-
+   console.log(values);
 
 
     // console.log(values);
@@ -32,10 +32,19 @@ let Random=()=>{
     }, [dispatch]);
 
     function addtocart(element)
-    {
-       dispatch(add_new_item_tocart(element));
-       console.log(values);
-    
+    { 
+        
+       console.log("runningthis function")
+       let dataincart=values.cart.data;
+       for(let i=0;i<dataincart.length;i++)
+       {  
+            if(dataincart[i].id==element.id)
+            {
+                alert("item is allready Added to cart");
+                return;
+            }
+       }
+       dispatch(add_new_item_tocart(element))
     }
 
     return (
@@ -43,9 +52,7 @@ let Random=()=>{
          <h1>All items</h1>
             <div className="contanier">
             {
-                values.data.map((item)=>{
-
-                    console.log(item);
+                values.api.data.map((item)=>{
                     return <div className="card" key={item.id}>
                         <img src={item.thumbnail}   />
                             <p>{item.title}</p>
