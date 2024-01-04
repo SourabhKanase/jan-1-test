@@ -50,6 +50,9 @@ let Random=()=>{
     return (
        <div>
          <h1>All items</h1>
+         {values.api.fetching ? (
+        <h1>Loading...</h1>
+      ) : null}
             <div className="contanier">
             {
                 values.api.data.map((item)=>{
